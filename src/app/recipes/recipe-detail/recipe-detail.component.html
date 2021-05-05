@@ -10,18 +10,32 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <div class="btn-group">
+        <div class="btn-group" appDropdown>
             <button
-            type="button"
-            class="btn btn-primary dropdown-toggle">
-            Manage Recipe <span class="caret"></span>
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"
+              >
+              Manage Recipe
             </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">To shopping list</a></li>
-                <li><a href="#">Edit recipe</a></li>
-                <li><a href="#">Delete recipe</a></li>
+            <ul  class="dropdown-menu">
+              <li class="dropdown-item"><a style="cursor: pointer;" (click)="onaddtoshoppinglist()">To Shopping List</a></li>
+              <li class="dropdown-item"><a style="cursor: pointer;" (click)="Onedit()">Edit Recipe</a></li>
+              <li class="dropdown-item"><a style="cursor: pointer;">Delete Recipe</a></li>
             </ul>
-        </div>
+          </div>
+      
+              <!-- <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Manage Recipe</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button ngbDropdownItem (clcik)="onaddtoshoppinglist()">To shopping list</button>
+                  <button ngbDropdownItem>Edit recipe</button>
+                  
+                </div> -->
+             
+
+    
     </div>
 </div>
 <div class="row">
@@ -31,6 +45,13 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        incredients
+       <ul class="list-group">
+        <li class="list-group-item"
+        *ngFor="let ingred of recipe.incredients"
+        
+        >
+        {{ingred.name}} {{ingred.amount}}
+        </li>
+       </ul>
     </div>
 </div>
