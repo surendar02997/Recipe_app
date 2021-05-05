@@ -25,7 +25,7 @@ export class RecipeDetailComponent implements OnInit {
     );
   }
   onaddtoshoppinglist(){
-   // alert();
+    alert();
     this.recipeservice.addincredienttoshoppinglist(this.recipe.incredients);
   }
 
