@@ -13,11 +13,11 @@ export class AppComponent {
       console.log("ngOnInit called");
       
     }
-    loadedfeature:string='recipe';
-    onnavigate(feature:string)
-    {
-      this.loadedfeature=feature;
-    }
+    // loadedfeature:string='recipe';
+    // onnavigate(feature:string)
+    // {
+    //   this.loadedfeature=feature;
+    // }
   //   ngOnDestroy()
   //   {
   //     console.log("ngOnDestroy called");

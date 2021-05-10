@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Incredient } from '../shared/ingredients.model';
 import { ShoppinglistSevice } from '../shopping-list/shopping-list.service';
 import { Recipe } from './recipe.model';
@@ -6,25 +7,27 @@ import { Recipe } from './recipe.model';
 @Injectable()
 export class RecipeService{
     
+    recipechanges=new Subject<Recipe[]>();
 
     private recipes:Recipe[]=[
-        new Recipe('Food',
-        'this is tasty food',
-        'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?webp=true&quality=90&resize=620%2C563',
-        [new Incredient('Meat',1),new Incredient('Oil',5)
+        new Recipe('Idly',
+        'Idly is the Best Breakfast',
+        'https://t3.ftcdn.net/jpg/03/62/02/26/360_F_362022640_fZ6UM0JycJlFDdBiR1pYlNddKfdGvYwR.jpg',
+        [new Incredient('Flaur',1),new Incredient('Onion',5)
     ]),
        
        
-    new Recipe('Water',
-    'this is tasty Water',
-    'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?webp=true&quality=90&resize=620%2C563',
-    [new Incredient('Water',1),new Incredient('Pan',5)
+    new Recipe('Meals',
+    'Meals is the traditional Lunch',
+    'https://thalappakatti.com/wp-content/uploads/2019/09/thalappakatti-fish-meals-1.jpg',
+    [new Incredient('Vegetables',1),new Incredient('salt',5)
 ]),
     ]
 
     constructor(private ShoppinglistSevice:ShoppinglistSevice){}
     
-    recipeselected=new EventEmitter<Recipe>();
+    // recipeselected=new EventEmitter<Recipe>();
+    // recipeselected=new Subject<Recipe>();
     getrecipes()
     {
        return this.recipes.slice();
@@ -38,6 +41,22 @@ export class RecipeService{
     addincredienttoshoppinglist(incredients:Incredient[])
     {
 this.ShoppinglistSevice.addingredients(incredients);
+    }
+
+    addrecipes(recipe:Recipe)
+    {
+        this.recipes.push(recipe);
+        this.recipechanges.next(this.recipes.slice());
+    }
+    updaterecipes(index:number,newrecipe:Recipe)
+    {
+        this.recipes[index]=newrecipe;
+        this.recipechanges.next(this.recipes.slice());
+    }
+    deleterecipe(index:number)
+    {
+        this.recipes.splice(index,1);
+        this.recipechanges.next(this.recipes.slice());
     }
 
 

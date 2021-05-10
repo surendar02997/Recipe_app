@@ -25,11 +25,16 @@ export class RecipeDetailComponent implements OnInit {
     );
   }
   onaddtoshoppinglist(){
-    alert();
+  //  alert();
     this.recipeservice.addincredienttoshoppinglist(this.recipe.incredients);
   }
 
   Onedit(){
 this.router.navigate(['edit'],{relativeTo:this.route});
+  }
+  ondelete()
+  {
+    this.recipeservice.deleterecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 }
