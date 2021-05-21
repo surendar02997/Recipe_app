@@ -18,7 +18,7 @@
                     <!-- <button class="btn btn-success mr-1" (click)="additem()">Add</button> -->
                     <button class="btn btn-success mr-1" type="submit" [disabled]="!f.valid">{{editmode ? 'Update' : 'Add'}}</button>
                     <button  *ngIf="editmode" class="btn btn-danger" (click)="ondelete()">Delete</button>
-                    <button class="btn btn-primary" (click)="onclear()">Clear</button>
+                    <button class="btn btn-primary" type="button" (click)="onclear()">Clear</button>
                    
                 </div>
             </div>

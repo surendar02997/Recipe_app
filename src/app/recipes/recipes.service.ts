@@ -24,10 +24,21 @@ export class RecipeService{
 ]),
     ]
 
+      //  private recipes:Recipe[]=[];
+
     constructor(private ShoppinglistSevice:ShoppinglistSevice){}
     
     // recipeselected=new EventEmitter<Recipe>();
     // recipeselected=new Subject<Recipe>();
+
+
+
+    setrecipes(recipes:Recipe[])//from firebase database
+    {
+       this.recipes=recipes;
+       this.recipechanges.next(this.recipes.slice());
+    }
+
     getrecipes()
     {
        return this.recipes.slice();

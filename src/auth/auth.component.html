@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <div class="alert alert-danger" *ngIf="error">
+        <p>{{error}}</p>
+      </div>
+      <div *ngIf="isspinner">
+        <app-spinner-loader style="text-align: center;"></app-spinner-loader>
+      </div>
+
+      <form #authform="ngForm" (ngSubmit)="submit(authform)" *ngIf="!isspinner">
+        <div class="form-group">
+          <label for="email">E-Mail</label>
+          <input type="email" ngModel name="email" required email id="email" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" ngModel name="password" required minlength="6"  id="password" class="form-control" />
+        </div>
+        <div>
+          <button class="btn btn-primary" type="submit" [disabled]="!authform.valid">{{isloginmode ? 'Login' : 'Signup'}}</button> |
+          <button class="btn btn-primary" type="button" (click)="switchmode()">Switch to {{isloginmode ? 'Signup' : 'Login'}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
