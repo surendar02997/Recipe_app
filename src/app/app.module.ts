@@ -24,6 +24,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from 'src/auth/auth.component';
 import { SpinnerLoaderComponent } from './shared/spinner-loader/spinner-loader.component';
 import { Authinterceptorservice } from 'src/auth/auth-interceptor.service';
+import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 
 
@@ -42,7 +44,9 @@ import { Authinterceptorservice } from 'src/auth/auth-interceptor.service';
     RecipeStartComponent,
     RecipeEditComponent,
     AuthComponent,
-    SpinnerLoaderComponent
+    SpinnerLoaderComponent,
+    AlertComponent,
+    PlaceholderDirective
     
   ],
   imports: [
